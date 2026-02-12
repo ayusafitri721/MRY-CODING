@@ -8,9 +8,9 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Admin\AdminClassController;
 use App\Http\Controllers\ForgotPasswordController;
 
-// Redirect root: jika sudah login arahkan ke classes, jika belum ke login
+// Root: jika sudah login arahkan ke classes, jika belum tampilkan landing page
 Route::get('/', function () {
-    return auth()->check() ? redirect()->route('classes.index') : redirect()->route('login');
+    return auth()->check() ? redirect()->route('classes.index') : view('landing');
 });
 
 // Auth Routes (Guest only - belum login)

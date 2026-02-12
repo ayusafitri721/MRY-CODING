@@ -16,8 +16,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="{{ auth()->check() ? (auth()->user()->isAdmin() ? route('admin.classes.index') : route('classes.index')) : route('login') }}" 
-                       class="text-2xl font-bold text-indigo-600">
+                    <a href="{{ url('/') }}" class="text-2xl font-bold text-indigo-600">
                         Les<span class="text-gray-800">Coding</span>
                     </a>
                 </div>
