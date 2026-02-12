@@ -11,8 +11,10 @@ class ClassController extends Controller
     // Menampilkan list semua kelas
     public function index()
     {
-        $classes = ClassModel::latest()->paginate(9);
-        return view('classes.index', compact('classes'));
+        // Redirect to the new dashboard view which provides an enhanced overview.
+        // This keeps the existing `classes.index` intact while surfacing the
+        // new dashboard at the familiar `/classes` URL.
+        return redirect()->route('dashboard');
     }
 
     // Menampilkan detail kelas

@@ -8,6 +8,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Admin\AdminClassController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\DashboardController;
 
 // Root: jika sudah login arahkan ke classes, jika belum tampilkan landing page
 Route::get('/', function () {
@@ -42,6 +43,8 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::middleware(['auth'])->group(function () {
     Route::get('/classes', [ClassController::class, 'index'])->name('classes.index');
     Route::get('/classes/{class}', [ClassController::class, 'show'])->name('classes.show');
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 // Admin Routes (harus login DAN role admin)

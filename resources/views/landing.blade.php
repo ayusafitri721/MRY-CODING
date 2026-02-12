@@ -109,10 +109,7 @@
                                 <img src="/images/logo-partner3.svg" alt="partner" class="h-6 trusted-logo" onerror="this.style.visibility='hidden'" />
                         </div>
 
-                            <div class="ml-6 border-l pl-6 text-sm text-[color:var(--muted)]">
-                                <div class="font-semibold"><span class="countup" data-target="500">0</span>+ latihan diselesaikan</div>
-                                <div class="mt-1"><span class="countup" data-target="90">0</span>% siswa lulus modul pertama</div>
-                            </div>
+                        
                     </div>
                 </div>
 
@@ -580,12 +577,23 @@
                 }
                 requestAnimationFrame(step);
             }
-            const counters = document.querySelectorAll('.countup');
-            counters.forEach(c=>{
-                const targ = c.dataset.target || 0;
-                const obs = new IntersectionObserver((ents, o)=>{ if(ents[0].isIntersecting){ animateCount(c, targ); o.unobserve(c); } }, {threshold:0.4});
-                obs.observe(c);
-            });
+            // Animate all social-proof counters at once when their container appears
+            const statsContainer = document.getElementById('social-proof-stats');
+            if (statsContainer) {
+                const counters = Array.from(statsContainer.querySelectorAll('.countup'));
+                const obsStats = new IntersectionObserver((ents, o)=>{
+                    if (ents[0].isIntersecting) {
+                        counters.forEach(c => {
+                            const targ = c.dataset.target || 0;
+                            animateCount(c, targ);
+                        });
+                        // reveal container simultaneously
+                        statsContainer.classList.add('revealed');
+                        o.unobserve(statsContainer);
+                    }
+                }, { threshold: 0.2 });
+                obsStats.observe(statsContainer);
+            }
 
             // Progress fill animation
             const progress = document.querySelectorAll('.progress-fill');
