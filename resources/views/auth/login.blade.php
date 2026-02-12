@@ -48,6 +48,20 @@
                     </div>
 
                     <button type="submit" class="w-full py-3 mt-2 rounded-full bg-blue-600 text-white font-semibold shadow-md">Login</button>
+                    <div class="mt-4 text-center text-slate-400">atau</div>
+
+                    <div class="mt-4 grid grid-cols-2 gap-3">
+                        <a href="{{ route('social.redirect', 'google') }}" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md">
+                            <img src="https://www.gstatic.com/devrel-devsite/prod/vd1b9f96a8a4a4d0b1a2c3d4e5f6f7/logo/googlelogo.png" alt="Google" class="h-5 w-5" />
+                            <span class="text-sm text-slate-700 font-medium">Login with Google</span>
+                        </a>
+
+                        <a href="{{ route('social.redirect', 'facebook') }}" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white shadow-sm hover:shadow-md">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.61.77-1.61 1.56v1.87h2.74l-.44 2.9h-2.3v7.03C18.34 21.2 22 17.07 22 12.07z"/></svg>
+                            <span class="text-sm font-medium">Login with Facebook</span>
+                        </a>
+                    </div>
+
                 </form>
                 <p class="text-center mt-6 text-slate-700">Belum punya akun? <a href="{{ route('register') }}" class="text-blue-600 font-semibold underline">Daftar di sini</a></p>
             </div>
