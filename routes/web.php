@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\Admin\AdminClassController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\NewsletterController;
 
 // Root: jika sudah login arahkan ke classes, jika belum tampilkan landing page
 Route::get('/', function () {
@@ -28,6 +29,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
 });
+
+// Newsletter subscribe (public)
+Route::post('/subscribe', [NewsletterController::class, 'store'])->name('subscribe');
 
 // Logout (harus sudah login)
 Route::post('/logout', [AuthController::class, 'logout'])
